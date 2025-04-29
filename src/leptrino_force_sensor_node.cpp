@@ -11,7 +11,7 @@ public:
     LeptrinoForceSensor(ros::NodeHandle& nh)
     : nh_(nh)
     {
-        nh_.param<std::string>("port", port_, "/dev/ttyUSB0");
+        nh_.param<std::string>("port", port_, "/dev/ttyACM0");
         nh_.param<int>("baudrate", baudrate_, 460800);
         nh_.param<std::string>("frame_id", frame_id_, "force_sensor_link");
 
@@ -129,7 +129,7 @@ private:
 
         for (int j = 0; j < 6; ++j)
         {
-            int16_t raw = static_cast<int16_t>(data[j*2] | (data[j*2+1] << 8));
+            int16_t raw = static_cast<int16_t>(data[j*2+4] | (data[j*2+5] << 8));
 
             float scaled = 0.0f;
             if (j < 3)
