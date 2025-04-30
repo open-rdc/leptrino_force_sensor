@@ -56,19 +56,23 @@ public:
                 recv_buffer_.insert(recv_buffer_.end(), data.begin(), data.end());
 
                 std::array<float, 6> wrench_data;
+                bool found = false;
                 while (parseFrame(recv_buffer_, wrench_data))
+                {
+                    found = true;
+                }
+
+                if (found)
                 {
                     geometry_msgs::WrenchStamped msg;
                     msg.header.stamp = ros::Time::now();
                     msg.header.frame_id = frame_id_;
-
                     msg.wrench.force.x = wrench_data[0];
                     msg.wrench.force.y = wrench_data[1];
                     msg.wrench.force.z = wrench_data[2];
                     msg.wrench.torque.x = wrench_data[3];
                     msg.wrench.torque.y = wrench_data[4];
                     msg.wrench.torque.z = wrench_data[5];
-
                     pub_.publish(msg);
                 }
             }
