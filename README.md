@@ -2,8 +2,8 @@
 
 ### Install
 
-git clone https://github.com/open-rdc/leptrino_force_sensor
-cd leptrino_force_sensor
+git clone https://github.com/open-rdc/leptrino_force_sensor  
+cd leptrino_force_sensor  
 git checkout humble_devel
 
 ### Execute
