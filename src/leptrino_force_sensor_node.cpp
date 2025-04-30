@@ -81,7 +81,12 @@ private:
     }
 
     std::array<float, 6> wrench_data;
+    bool found = false;
     while (parseFrame(recv_buffer_, wrench_data)) {
+      found = true;
+    }
+
+    if (found) {
       auto msg = geometry_msgs::msg::WrenchStamped();
       msg.header.stamp = this->now();
       msg.header.frame_id = frame_id_;
