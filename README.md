@@ -1,9 +1,9 @@
 # leptrino_force_sensor
 
-### INSTALL
+### Install
 
 git clone https://github.com/open-rdc/leptrino_force_sensor
 
-### EXECUTE
+### Execute
 
 rosrun rosrun leptrino_force_sensor leptrino_force_sensor_node
